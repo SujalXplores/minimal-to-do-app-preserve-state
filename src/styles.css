@@ -1,0 +1,127 @@
+:root {
+  --color-black: #000000;
+  --color-primary: #ffc600;
+  --color-warn: #ea4c12;
+  --color-grey: #a8a8a8;
+  --color-white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: Roboto, Arial, sans-serif;
+  background: var(--color-primary);
+}
+
+.elm {
+  height: 44px;
+  padding: 1rem;
+  border-radius: 5px;
+  outline: none;
+  border: 0;
+}
+
+button.elm {
+  margin-left: 10px;
+  background: #9370d8;
+  color: var(--color-white);
+  cursor: pointer;
+}
+
+#todo-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  flex-wrap: wrap;
+}
+
+.form__input {
+  min-width: 65%;
+  font-variant-ligatures: none;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.todo-list__container {
+  display: flex;
+  margin: 0 auto;
+  width: 75%;
+  background: var(--color-white);
+  flex-wrap: nowrap;
+  border-radius: 5px 0 5px 5px;
+  box-shadow: 5px 5px 4px 0px rgba(0, 0, 0, 0.4);
+}
+
+.todo__list-ul {
+  list-style: none;
+}
+
+input[type="checkbox"]:checked + label.todo__description {
+  text-decoration: line-through;
+}
+
+.todo__task-li,
+.todo__list-ul {
+  width: 100%;
+}
+
+.todo__task-li {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  min-height: 60px;
+}
+
+.todo__task-li--done {
+  background: rgb(249, 249, 249);
+}
+
+.todo__task-li:not(:last-child) {
+  border-bottom: 1px solid var(--color-grey);
+}
+
+.todo__checkbox {
+  margin: 1rem;
+}
+
+.todo__description {
+  width: 100%;
+  border-left: 1px solid var(--color-grey);
+  border-right: 1px solid var(--color-grey);
+  line-height: 60px;
+  padding: 0 20px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.delete_btn {
+  color: var(--color-warn);
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+@media (max-width: 19rem) {
+  .form__input,
+  button.elm {
+    width: 100%;
+  }
+
+  button.elm {
+    margin: 1rem 0;
+  }
+}
+
+@media (max-width: 22rem) {
+  .todo-list__container {
+    width: 86%;
+  }
+}

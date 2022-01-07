@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>To-Do</title>
+    <link rel="stylesheet" href="src/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script src="src/index.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <form id="todo-form">
+        <input
+          class="elm form__input"
+          type="search"
+          placeholder="Take a note..."
+          id="note-input"
+        />
+        <button class="elm" type="submit">Add</button>
+      </form>
+      <section class="todo-list__container">
+        <ul id="todo-list" class="todo__list-ul"></ul>
+      </section>
+    </main>
+  </body>
+</html>
