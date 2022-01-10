@@ -64,8 +64,9 @@ button.elm {
   list-style: none;
 }
 
-input[type="checkbox"]:checked + label.todo__description {
+input[type='checkbox']:checked + label.todo__description {
   text-decoration: line-through;
+  background: rgb(237 237 237);
 }
 
 .todo__task-li,
@@ -79,10 +80,6 @@ input[type="checkbox"]:checked + label.todo__description {
   flex-direction: row;
   align-items: center;
   min-height: 60px;
-}
-
-.todo__task-li--done {
-  background: rgb(249, 249, 249);
 }
 
 .todo__task-li:not(:last-child) {
