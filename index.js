@@ -8,42 +8,34 @@
 
     todos.forEach((todo) => {
       const { ul, li } = makeList();
-
       const checkbox = addCheckBox(todo.checked, todo.id);
-
       const task = todoDescription(todo.name);
-
-      const index = todos.indexOf(todo);
-      const delete_button = delete_btn(index);
+      const delete_button = onDeleteHandler();
 
       appendToUl(ul, li, checkbox, task, delete_button);
     });
   });
 
+  // on add event listener
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const input_value = document.getElementById('note-input').value;
 
     if (input_value !== '') {
       const { ul, li } = makeList();
-
       const checkbox_data = Date.now();
       const checkbox = addCheckBox(false, checkbox_data);
-
       const task = todoDescription(input_value);
-
-      // add this to-do to the array
       const todo = {
         id: checkbox_data,
         name: input_value,
         checked: false,
       };
-
-      const index = todos.indexOf(todo);
-      const delete_button = delete_btn(index);
+      const delete_button = onDeleteHandler();
 
       appendToUl(ul, li, checkbox, task, delete_button);
 
+      // add this to-do to the array
       todos.push(todo);
 
       // reset form after adding task
@@ -52,6 +44,7 @@
   });
 
   window.onbeforeunload = () => {
+    console.log('Refresh happened!');
     localStorage.setItem('todo-history', JSON.stringify(todos));
   };
 
@@ -82,15 +75,19 @@
     return task;
   }
 
-  function delete_btn(index) {
+  function onDeleteHandler() {
     const delete_button = document.createElement('span');
     delete_button.className = 'material-icons delete_btn';
     delete_button.innerText = 'delete';
 
     delete_button.addEventListener('click', () => {
-      delete_button.parentElement.remove();
+      const checkbox = delete_button.previousElementSibling.previousElementSibling;
+      const checkbox_data = checkbox.dataset.time;
+      const index = todos.findIndex((todo) => todo.id == checkbox_data);
+
       if (index !== -1) {
         todos.splice(index, 1);
+        delete_button.parentElement.remove();
       }
     });
 
@@ -102,14 +99,12 @@
     checkbox.type = 'checkbox';
     checkbox.className = 'todo__checkbox';
     checkbox.checked = isChecked;
-
-    const checkbox_data = data_time;
-    checkbox.setAttribute('data-time', checkbox_data);
+    checkbox.setAttribute('data-time', data_time);
 
     checkbox.addEventListener('change', (e) => {
-      const checkbox_data = e.target.getAttribute('data-time');
+      const checkbox_data_time = e.target.getAttribute('data-time');
       todos.forEach((todo) => {
-        if (todo.id == checkbox_data) {
+        if (todo.id == checkbox_data_time) {
           todo.checked = e.target.checked;
         }
       });
