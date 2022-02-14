@@ -29,7 +29,6 @@ body {
 }
 
 button.elm {
-  margin-left: 10px;
   background: #9370d8;
   color: var(--color-white);
   cursor: pointer;
@@ -41,19 +40,22 @@ button.elm {
   align-items: center;
   padding: 1rem;
   flex-wrap: wrap;
+  grid-gap: 10px;
 }
 
 .form__input {
-  min-width: 65%;
+  max-width: 513px;
   font-variant-ligatures: none;
   white-space: pre-wrap;
   word-wrap: break-word;
+  width: 92%;
 }
 
 .todo-list__container {
   display: flex;
   margin: 0 auto;
-  width: 75%;
+  width: 100%;
+  max-width: 580px;
   background: var(--color-white);
   flex-wrap: nowrap;
   border-radius: 5px 0 5px 5px;
@@ -80,6 +82,8 @@ input[type='checkbox']:checked + label.todo__description {
   flex-direction: row;
   align-items: center;
   min-height: 60px;
+  opacity: 1;
+  transition: all 0.6s ease-out;
 }
 
 .todo__task-li:not(:last-child) {
@@ -96,8 +100,10 @@ input[type='checkbox']:checked + label.todo__description {
   border-right: 1px solid var(--color-grey);
   line-height: 60px;
   padding: 0 20px;
-  white-space: pre-wrap;
+  white-space: nowrap;
   word-wrap: break-word;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .delete_btn {
@@ -111,14 +117,17 @@ input[type='checkbox']:checked + label.todo__description {
   button.elm {
     width: 100%;
   }
-
-  button.elm {
-    margin: 1rem 0;
+  .todo-list__container {
+    width: 86%;
   }
 }
 
-@media (max-width: 22rem) {
+@media (min-width: 19rem) and (max-width: 38.125rem) {
   .todo-list__container {
     width: 86%;
+  }
+  button.elm {
+    width: 92%;
+    max-width: 513px;
   }
 }
