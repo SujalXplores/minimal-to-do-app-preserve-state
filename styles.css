@@ -4,6 +4,7 @@
   --color-warn: #ea4c12;
   --color-grey: #a8a8a8;
   --color-white: #ffffff;
+  --color-purple: #9b59b6;
 }
 
 * {
@@ -29,7 +30,7 @@ body {
 }
 
 button.elm {
-  background: #9370d8;
+  background: var(--color-purple);
   color: var(--color-white);
   cursor: pointer;
 }
@@ -82,8 +83,6 @@ input[type='checkbox']:checked + label.todo__description {
   flex-direction: row;
   align-items: center;
   min-height: 60px;
-  opacity: 1;
-  transition: all 0.6s ease-out;
 }
 
 .todo__task-li:not(:last-child) {
